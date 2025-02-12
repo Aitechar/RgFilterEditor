@@ -1,4 +1,4 @@
-# FilterEditor
+# RgFilterEditor
 
 1. 流放之路2 (POE2) 的过滤制作器，它可以
     1. 即时预览掉落样式

@@ -13,7 +13,7 @@ namespace FilterEditor
         public Form1()
         {
             InitializeComponent();
-            _treeMaps = TreeFactory.BuildTreesBy(@"E:\FilterEditor\TreeNodeBase\StyleBox\NormalTree.json");
+            _treeMaps = TreeFactory.BuildTreesBy(@"TreeNodeBase\StyleBox\NormalTree.json");
 
             /// 样式Combo框选择的来源
             StyleMapIcon_comboBox.DataSource = Enum.GetValues<MiniMapIconEnum>();
