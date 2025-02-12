@@ -1,0 +1,819 @@
+[
+    {
+        "ClassShowName": "玩法与地图",
+        "SeqTrees": [
+            {
+                "ClassShowName": "换界石",
+                "ClassName": [
+                    "Waystones"
+                ],
+                "BaseTypeName": [],
+                "AttrEnum": [
+                    "WayStoneLevel",
+                    "Rarity"
+                ]
+            },
+            {
+                "ClassShowName": "觐见帝王",
+                "ClassName": [
+                    "Map Fragments"
+                ],
+                "BaseTypeName": [
+                    "An Audience With The King"
+                ],
+                "AttrEnum": []
+            },
+            {
+                "ClassShowName": "裂隙石",
+                "ClassName": [
+                    "Breachstone"
+                ],
+                "BaseTypeName": [
+                    "Breachstone"
+                ],
+                "AttrEnum": []
+            },
+            {
+                "ClassShowName": "裂隙与幻象碎片",
+                "ClassName": [
+                    "Stackable Currency"
+                ],
+                "BaseTypeName": [
+                    "Breach Splinter",
+                    "Simulacrum Splinter"
+                ],
+                "AttrEnum": [
+                    "StackCount"
+                ]
+            },
+            {
+                "ClassShowName": "梦魇拟像",
+                "ClassName": [
+                    "Map Fragments"
+                ],
+                "BaseTypeName": [
+                    "Simulacrum"
+                ],
+                "AttrEnum": []
+            },
+            {
+                "ClassShowName": "探险地图",
+                "ClassName": [
+                    "Logbook"
+                ],
+                "BaseTypeName": [
+                    "Logbook"
+                ],
+                "AttrEnum": [
+                    "ItemLevel"
+                ]
+            }
+        ]
+    },
+    {
+        "ClassShowName": "未切割的技能宝石",
+        "SeqTrees": [
+            {
+                "ClassShowName": "技能宝石",
+                "ClassName": [
+                    "Gems"
+                ],
+                "BaseTypeName": [
+                    "Uncut Skill Gem"
+                ],
+                "AttrEnum": [
+                    "GemLevel",
+                    "StackCount"
+                ]
+            },
+            {
+                "ClassShowName": "精魂宝石",
+                "ClassName": [
+                    "Gems"
+                ],
+                "BaseTypeName": [
+                    "Uncut Spirit Gem"
+                ],
+                "AttrEnum": [
+                    "GemLevel",
+                    "StackCount"
+                ]
+            },
+            {
+                "ClassShowName": "辅助宝石",
+                "ClassName": [
+                    "Gems"
+                ],
+                "BaseTypeName": [
+                    "Uncut Support Gem"
+                ],
+                "AttrEnum": [
+                    "SupportLevel",
+                    "StackCount"
+                ]
+            }
+        ]
+    },
+    {
+        "ClassShowName": "单手武器",
+        "SeqTrees": [
+            {
+                "ClassShowName": "法杖",
+                "ClassName": [
+                    "Wands"
+                ],
+                "BaseTypeName": [],
+                "AttrEnum": [
+                    "ItemLevel",
+                    "Rarity"
+                ]
+            },
+            {
+                "ClassShowName": "单手锤",
+                "ClassName": [
+                    "One Hand Maces"
+                ],
+                "BaseTypeName": [],
+                "AttrEnum": [
+                    "ItemLevel",
+                    "Rarity"
+                ]
+            },
+            {
+                "ClassShowName": "短杖",
+                "ClassName": [
+                    "Sceptres"
+                ],
+                "BaseTypeName": [],
+                "AttrEnum": [
+                    "ItemLevel",
+                    "Rarity",
+                    "Spirit"
+                ]
+            }
+        ]
+    },
+    {
+        "ClassShowName": "双手武器",
+        "SeqTrees": [
+            {
+                "ClassShowName": "弓",
+                "ClassName": [
+                    "Bow"
+                ],
+                "BaseTypeName": [],
+                "AttrEnum": [
+                    "ItemLevel",
+                    "Rarity"
+                ]
+            },
+            {
+                "ClassShowName": "征战长杖",
+                "ClassName": [
+                    "Quarterstaves"
+                ],
+                "BaseTypeName": [],
+                "AttrEnum": [
+                    "ItemLevel",
+                    "Rarity"
+                ]
+            },
+            {
+                "ClassShowName": "双手锤",
+                "ClassName": [
+                    "Two Hand Maces"
+                ],
+                "BaseTypeName": [],
+                "AttrEnum": [
+                    "ItemLevel",
+                    "Rarity"
+                ]
+            },
+            {
+                "ClassShowName": "长杖",
+                "ClassName": [
+                    "Staves"
+                ],
+                "BaseTypeName": [],
+                "AttrEnum": [
+                    "ItemLevel",
+                    "Rarity"
+                ]
+            },
+            {
+                "ClassShowName": "战弩",
+                "ClassName": [
+                    "Crossbows"
+                ],
+                "BaseTypeName": [],
+                "AttrEnum": [
+                    "ItemLevel",
+                    "Rarity"
+                ]
+            }
+        ]
+    },
+    {
+        "ClassShowName": "副手",
+        "SeqTrees": [
+            {
+                "ClassShowName": "箭袋",
+                "ClassName": [
+                    "Quivers"
+                ],
+                "BaseTypeName": [],
+                "AttrEnum": [
+                    "ItemLevel",
+                    "Rarity"
+                ]
+            },
+            {
+                "ClassShowName": "盾牌",
+                "ClassName": [
+                    "Shields"
+                ],
+                "BaseTypeName": [],
+                "AttrEnum": [
+                    "ItemLevel",
+                    "Rarity",
+                    "Armour"
+                ]
+            },
+            {
+                "ClassShowName": "法器",
+                "ClassName": [
+                    "Foci"
+                ],
+                "BaseTypeName": [],
+                "AttrEnum": [
+                    "ItemLevel",
+                    "Rarity",
+                    "EnergyShield"
+                ]
+            }
+        ]
+    },
+    {
+        "ClassShowName": "防具",
+        "SeqTrees": [
+            {
+                "ClassShowName": "头盔",
+                "ClassName": [
+                    "Helmets"
+                ],
+                "BaseTypeName": [],
+                "AttrEnum": [
+                    "ItemLevel",
+                    "Rarity",
+                    "Armour",
+                    "Evasion",
+                    "EnergyShield"
+                ]
+            },
+            {
+                "ClassShowName": "胸甲",
+                "ClassName": [
+                    "Body Armours"
+                ],
+                "BaseTypeName": [],
+                "AttrEnum": [
+                    "ItemLevel",
+                    "Rarity",
+                    "Armour",
+                    "Evasion",
+                    "EnergyShield"
+                ]
+            },
+            {
+                "ClassShowName": "手套",
+                "ClassName": [
+                    "Gloves"
+                ],
+                "BaseTypeName": [],
+                "AttrEnum": [
+                    "ItemLevel",
+                    "Rarity",
+                    "Armour",
+                    "Evasion",
+                    "EnergyShield"
+                ]
+            },
+            {
+                "ClassShowName": "鞋子",
+                "ClassName": [
+                    "Boots"
+                ],
+                "BaseTypeName": [],
+                "AttrEnum": [
+                    "ItemLevel",
+                    "Rarity",
+                    "Armour",
+                    "Evasion",
+                    "EnergyShield"
+                ]
+            }
+        ]
+    },
+    {
+        "ClassShowName": "项链",
+        "SeqTrees": [
+            {
+                "ClassShowName": "项链",
+                "ClassName": [
+                    "Amulets"
+                ],
+                "BaseTypeName": [],
+                "AttrEnum": [
+                    "ItemLevel",
+                    "Rarity"
+                ]
+            },
+            {
+                "ClassShowName": "戒指",
+                "ClassName": [
+                    "Rings"
+                ],
+                "BaseTypeName": [],
+                "AttrEnum": [
+                    "ItemLevel",
+                    "Rarity"
+                ]
+            },
+            {
+                "ClassShowName": "腰带",
+                "ClassName": [
+                    "Belts"
+                ],
+                "BaseTypeName": [],
+                "AttrEnum": [
+                    "ItemLevel",
+                    "Rarity"
+                ]
+            }
+        ]
+    },
+    {
+        "ClassShowName": "药剂与护符",
+        "SeqTrees": [
+            {
+                "ClassShowName": "生命药剂",
+                "ClassName": [
+                    "Life Flasks"
+                ],
+                "BaseTypeName": [],
+                "AttrEnum": [
+                    "ItemLevel",
+                    "Quality",
+                    "Rarity"
+                ]
+            },
+            {
+                "ClassShowName": "魔力药剂",
+                "ClassName": [
+                    "Mana Flasks"
+                ],
+                "BaseTypeName": [],
+                "AttrEnum": [
+                    "ItemLevel",
+                    "Quality",
+                    "Rarity"
+                ]
+            },
+            {
+                "ClassShowName": "护符",
+                "ClassName": [
+                    "Charms"
+                ],
+                "BaseTypeName": [],
+                "AttrEnum": [
+                    "Quality",
+                    "ItemLevel"
+                ]
+            }
+        ]
+    },
+    {
+        "ClassShowName": "高价值通货",
+        "SeqTrees": [
+            {
+                "ClassShowName": "金币",
+                "ClassName": [
+                    "Stackable Currency"
+                ],
+                "BaseTypeName": [
+                    "Gold"
+                ],
+                "AttrEnum": [
+                    "StackCount"
+                ]
+            },
+            {
+                "ClassShowName": "卡兰德的魔镜",
+                "ClassName": [
+                    "Stackable Currency"
+                ],
+                "BaseTypeName": [
+                    "Mirror of Kalandra"
+                ],
+                "AttrEnum": [
+                    "StackCount"
+                ]
+            },
+            {
+                "ClassShowName": "神圣石",
+                "ClassName": [
+                    "Stackable Currency"
+                ],
+                "BaseTypeName": [
+                    "Divine Orb"
+                ],
+                "AttrEnum": [
+                    "StackCount"
+                ]
+            },
+            {
+                "ClassShowName": "完美工匠石",
+                "ClassName": [
+                    "Stackable Currency"
+                ],
+                "BaseTypeName": [
+                    "Perfect Jeweller's Orb"
+                ],
+                "AttrEnum": [
+                    "StackCount"
+                ]
+            }
+        ]
+    },
+    {
+        "ClassShowName": "中上价值通货",
+        "SeqTrees": [
+            {
+                "ClassShowName": "瓦尔宝珠",
+                "ClassName": [
+                    "Stackable Currency"
+                ],
+                "BaseTypeName": [
+                    "Vaal Orb"
+                ],
+                "AttrEnum": [
+                    "StackCount"
+                ]
+            },
+            {
+                "ClassShowName": "剥离石",
+                "ClassName": [
+                    "Stackable Currency"
+                ],
+                "BaseTypeName": [
+                    "Orb of Annulment"
+                ],
+                "AttrEnum": [
+                    "StackCount"
+                ]
+            },
+            {
+                "ClassShowName": "崇高石",
+                "ClassName": [
+                    "Stackable Currency"
+                ],
+                "BaseTypeName": [
+                    "Exalted Orb"
+                ],
+                "AttrEnum": [
+                    "StackCount"
+                ]
+            },
+            {
+                "ClassShowName": "机会石",
+                "ClassName": [
+                    "Stackable Currency"
+                ],
+                "BaseTypeName": [
+                    "Orb of Chance"
+                ],
+                "AttrEnum": [
+                    "StackCount"
+                ]
+            },
+            {
+                "ClassShowName": "高级工匠石",
+                "ClassName": [
+                    "Stackable Currency"
+                ],
+                "BaseTypeName": [
+                    "Greater Jeweller's Orb"
+                ],
+                "AttrEnum": [
+                    "StackCount"
+                ]
+            },
+            {
+                "ClassShowName": "混沌石",
+                "ClassName": [
+                    "Stackable Currency"
+                ],
+                "BaseTypeName": [
+                    "Chaos Orb"
+                ],
+                "AttrEnum": [
+                    "StackCount"
+                ]
+            }
+        ]
+    },
+    {
+        "ClassShowName": "中下价值通货",
+        "SeqTrees": [
+            {
+                "ClassShowName": "点金石",
+                "ClassName": [
+                    "Stackable Currency"
+                ],
+                "BaseTypeName": [
+                    "Orb of Alchemy"
+                ],
+                "AttrEnum": [
+                    "StackCount"
+                ]
+            },
+            {
+                "ClassShowName": "富豪石",
+                "ClassName": [
+                    "Stackable Currency"
+                ],
+                "BaseTypeName": [
+                    "Regal Orb"
+                ],
+                "AttrEnum": [
+                    "StackCount"
+                ]
+            },
+            {
+                "ClassShowName": "小型工匠石",
+                "ClassName": [
+                    "Stackable Currency"
+                ],
+                "BaseTypeName": [
+                    "Lesser Jeweller's Orb"
+                ],
+                "AttrEnum": [
+                    "StackCount"
+                ]
+            }
+        ]
+    },
+    {
+        "ClassShowName": "低价值通货",
+        "SeqTrees": [
+            {
+                "ClassShowName": "知识卷轴",
+                "ClassName": [
+                    "Stackable Currency"
+                ],
+                "BaseTypeName": [
+                    "Scroll of Wisdom"
+                ],
+                "AttrEnum": [
+                    "StackCount"
+                ]
+            },
+            {
+                "ClassShowName": "增幅石",
+                "ClassName": [
+                    "Stackable Currency"
+                ],
+                "BaseTypeName": [
+                    "Orb of Augmentation"
+                ],
+                "AttrEnum": [
+                    "StackCount"
+                ]
+            },
+            {
+                "ClassShowName": "蜕变石",
+                "ClassName": [
+                    "Stackable Currency"
+                ],
+                "BaseTypeName": [
+                    "Orb of Transmutation"
+                ],
+                "AttrEnum": [
+                    "StackCount"
+                ]
+            }
+        ]
+    },
+    {
+        "ClassShowName": "品质强化通货",
+        "SeqTrees": [
+            {
+                "ClassShowName": "磨刀石",
+                "ClassName": [
+                    "Stackable Currency"
+                ],
+                "BaseTypeName": [
+                    "Blacksmith's Whetstone"
+                ],
+                "AttrEnum": [
+                    "StackCount"
+                ]
+            },
+            {
+                "ClassShowName": "宝石匠的棱镜",
+                "ClassName": [
+                    "Stackable Currency"
+                ],
+                "BaseTypeName": [
+                    "Gemcutter's Prism"
+                ],
+                "AttrEnum": [
+                    "StackCount"
+                ]
+            },
+            {
+                "ClassShowName": "装备工匠石",
+                "ClassName": [
+                    "Stackable Currency"
+                ],
+                "BaseTypeName": [
+                    "Artificer's Orb"
+                ],
+                "AttrEnum": [
+                    "StackCount"
+                ]
+            },
+            {
+                "ClassShowName": "护甲片",
+                "ClassName": [
+                    "Stackable Currency"
+                ],
+                "BaseTypeName": [
+                    "Armourer's Scrap"
+                ],
+                "AttrEnum": [
+                    "StackCount"
+                ]
+            },
+            {
+                "ClassShowName": "奥术蚀刻师",
+                "ClassName": [
+                    "Stackable Currency"
+                ],
+                "BaseTypeName": [
+                    "Arcanist's Etcher"
+                ],
+                "AttrEnum": [
+                    "StackCount"
+                ]
+            },
+            {
+                "ClassShowName": "玻璃弹珠",
+                "ClassName": [
+                    "Stackable Currency"
+                ],
+                "BaseTypeName": [
+                    "Glassblower's Bauble"
+                ],
+                "AttrEnum": [
+                    "StackCount"
+                ]
+            }
+        ]
+    },
+    {
+        "ClassShowName": "通货碎片",
+        "SeqTrees": [
+            {
+                "ClassShowName": "机会碎片",
+                "ClassName": [
+                    "Stackable Currency"
+                ],
+                "BaseTypeName": [
+                    "Chance Shard"
+                ],
+                "AttrEnum": [
+                    "StackCount"
+                ]
+            },
+            {
+                "ClassShowName": "蜕变石碎片",
+                "ClassName": [
+                    "Stackable Currency"
+                ],
+                "BaseTypeName": [
+                    "Alteration Shard"
+                ],
+                "AttrEnum": [
+                    "StackCount"
+                ]
+            },
+            {
+                "ClassShowName": "富豪石碎片",
+                "ClassName": [
+                    "Stackable Currency"
+                ],
+                "BaseTypeName": [
+                    "Regal Shard"
+                ],
+                "AttrEnum": [
+                    "StackCount"
+                ]
+            },
+            {
+                "ClassShowName": "工匠碎片",
+                "ClassName": [
+                    "Stackable Currency"
+                ],
+                "BaseTypeName": [
+                    "Artificer's Shard"
+                ],
+                "AttrEnum": [
+                    "StackCount"
+                ]
+            }
+        ]
+    },
+    {
+        "ClassShowName": "异域通货",
+        "SeqTrees": [
+            {
+                "ClassShowName": "文物货币",
+                "ClassName": [
+                    "Stackable Currency"
+                ],
+                "BaseTypeName": [
+                    "Sun Artifact",
+                    "Order Artifact",
+                    "Black Scythe Artifact",
+                    "Broken Circle Artifact"
+                ],
+                "AttrEnum": [
+                    "StackCount"
+                ]
+            },
+            {
+                "ClassShowName": "异域铸币",
+                "ClassName": [
+                    "Stackable Currency"
+                ],
+                "BaseTypeName": [
+                    "Exotic Coinage"
+                ],
+                "AttrEnum": [
+                    "StackCount"
+                ]
+            }
+        ]
+    },
+    {
+        "ClassShowName": "圣所钥匙",
+        "SeqTrees": [
+            {
+                "ClassShowName": "钥匙",
+                "ClassName": [
+                    "Stackable Currency"
+                ],
+                "BaseTypeName": [
+                    "Bronze Key",
+                    "Gold Key",
+                    "Silver Key"
+                ],
+                "AttrEnum": []
+            }
+        ]
+    },
+    {
+        "ClassShowName": "珠宝",
+        "SeqTrees": [
+            {
+                "ClassShowName": "三色珠宝",
+                "ClassName": [
+                    "Jewel"
+                ],
+                "BaseTypeName": [
+                    "Ruby",
+                    "Emerald",
+                    "Sapphire"
+                ],
+                "AttrEnum": [
+                    "Rarity"
+                ]
+            },
+            {
+                "ClassShowName": "时迭珠宝",
+                "ClassName": [
+                    "Jewel"
+                ],
+                "BaseTypeName": [
+                    "Time-Lost Ruby",
+                    "Time-Lost Emerald",
+                    "Time-Lost Sapphire"
+                ],
+                "AttrEnum": [
+                    "Rarity"
+                ]
+            }
+        ]
+    }
+]
