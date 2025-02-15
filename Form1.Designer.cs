@@ -51,6 +51,8 @@
             EditorStyleControl = new MyControl.StyleControl();
             StyleBox_groupBox = new GroupBox();
             StyleSound_groupBox = new GroupBox();
+            AudioShow_Label = new Label();
+            AudioResouce_ComboBox = new ComboBox();
             StyleFontSize_flowLayoutPanel1 = new FlowLayoutPanel();
             StyleFontShow_label1 = new Label();
             StyleFontSize_trackBar = new TrackBar();
@@ -69,6 +71,12 @@
             colorDialog1 = new ColorDialog();
             Expoprt_button = new Button();
             saveFileDialog1 = new SaveFileDialog();
+            tabControl = new TabControl();
+            tabPage1 = new TabPage();
+            tabPage2 = new TabPage();
+            audioResoucePanel = new MyControl.AudioResouceBox.AudioResoucePanel();
+            tabPage3 = new TabPage();
+            CopyAudio_checkBox = new CheckBox();
             AddNewClassAttr_GroupBox.SuspendLayout();
             AddNewClassAttr_LayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)AddNewClassAttr_NumericUpDown).BeginInit();
@@ -80,20 +88,25 @@
             TreeNode_groupBox.SuspendLayout();
             flowLayoutPanel2.SuspendLayout();
             NodeStyle_groupBox.SuspendLayout();
+            StyleSound_groupBox.SuspendLayout();
             StyleFontSize_flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)StyleFontSize_trackBar).BeginInit();
             flowLayoutPanel3.SuspendLayout();
             StyleColorBox_LayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)Scene_pictureBox).BeginInit();
+            tabControl.SuspendLayout();
+            tabPage1.SuspendLayout();
+            tabPage2.SuspendLayout();
+            tabPage3.SuspendLayout();
             SuspendLayout();
             // 
             // EditorTreeView
             // 
             EditorTreeView.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             EditorTreeView.HotTracking = true;
-            EditorTreeView.Location = new Point(12, 12);
+            EditorTreeView.Location = new Point(6, 6);
             EditorTreeView.Name = "EditorTreeView";
-            EditorTreeView.Size = new Size(304, 735);
+            EditorTreeView.Size = new Size(304, 695);
             EditorTreeView.TabIndex = 0;
             EditorTreeView.NodeMouseClick += EditorTreeView_NodeMouseClick;
             EditorTreeView.NodeMouseDoubleClick += EditorTreeView_NodeMouseDoubleClick;
@@ -265,10 +278,9 @@
             // 
             // TreeNode_groupBox
             // 
-            TreeNode_groupBox.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             TreeNode_groupBox.AutoSize = true;
             TreeNode_groupBox.Controls.Add(flowLayoutPanel2);
-            TreeNode_groupBox.Location = new Point(327, 12);
+            TreeNode_groupBox.Location = new Point(319, 6);
             TreeNode_groupBox.Name = "TreeNode_groupBox";
             TreeNode_groupBox.Size = new Size(733, 336);
             TreeNode_groupBox.TabIndex = 6;
@@ -289,7 +301,7 @@
             // 
             // NodeStyle_groupBox
             // 
-            NodeStyle_groupBox.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            NodeStyle_groupBox.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             NodeStyle_groupBox.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             NodeStyle_groupBox.Controls.Add(EditorStyleControl);
             NodeStyle_groupBox.Controls.Add(StyleBox_groupBox);
@@ -298,9 +310,9 @@
             NodeStyle_groupBox.Controls.Add(flowLayoutPanel3);
             NodeStyle_groupBox.Controls.Add(StyleColorBox_LayoutPanel);
             NodeStyle_groupBox.Controls.Add(Scene_pictureBox);
-            NodeStyle_groupBox.Location = new Point(333, 365);
+            NodeStyle_groupBox.Location = new Point(318, 326);
             NodeStyle_groupBox.Name = "NodeStyle_groupBox";
-            NodeStyle_groupBox.Size = new Size(727, 427);
+            NodeStyle_groupBox.Size = new Size(734, 415);
             NodeStyle_groupBox.TabIndex = 7;
             NodeStyle_groupBox.TabStop = false;
             NodeStyle_groupBox.Text = "编辑掉落样式";
@@ -317,19 +329,41 @@
             // 
             StyleBox_groupBox.Location = new Point(439, 22);
             StyleBox_groupBox.Name = "StyleBox_groupBox";
-            StyleBox_groupBox.Size = new Size(282, 399);
+            StyleBox_groupBox.Size = new Size(282, 388);
             StyleBox_groupBox.TabIndex = 16;
             StyleBox_groupBox.TabStop = false;
             StyleBox_groupBox.Text = "样式盘";
             // 
             // StyleSound_groupBox
             // 
+            StyleSound_groupBox.Controls.Add(AudioShow_Label);
+            StyleSound_groupBox.Controls.Add(AudioResouce_ComboBox);
             StyleSound_groupBox.Location = new Point(6, 282);
             StyleSound_groupBox.Name = "StyleSound_groupBox";
-            StyleSound_groupBox.Size = new Size(422, 139);
+            StyleSound_groupBox.Size = new Size(422, 128);
             StyleSound_groupBox.TabIndex = 15;
             StyleSound_groupBox.TabStop = false;
             StyleSound_groupBox.Text = "掉落音效编辑";
+            // 
+            // AudioShow_Label
+            // 
+            AudioShow_Label.AutoSize = true;
+            AudioShow_Label.Location = new Point(8, 25);
+            AudioShow_Label.Name = "AudioShow_Label";
+            AudioShow_Label.Size = new Size(59, 17);
+            AudioShow_Label.TabIndex = 4;
+            AudioShow_Label.Text = "更改音效:";
+            // 
+            // AudioResouce_ComboBox
+            // 
+            AudioResouce_ComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            AudioResouce_ComboBox.FormattingEnabled = true;
+            AudioResouce_ComboBox.Location = new Point(82, 22);
+            AudioResouce_ComboBox.Name = "AudioResouce_ComboBox";
+            AudioResouce_ComboBox.Size = new Size(121, 25);
+            AudioResouce_ComboBox.TabIndex = 3;
+            AudioResouce_ComboBox.DropDown += AudioResouce_ComboBox_DropDown;
+            AudioResouce_ComboBox.SelectionChangeCommitted += AudioResouce_ComboBox_SelectionChangeCommitted;
             // 
             // StyleFontSize_flowLayoutPanel1
             // 
@@ -488,7 +522,8 @@
             // 
             // Expoprt_button
             // 
-            Expoprt_button.Location = new Point(12, 753);
+            Expoprt_button.FlatStyle = FlatStyle.Flat;
+            Expoprt_button.Location = new Point(6, 707);
             Expoprt_button.Name = "Expoprt_button";
             Expoprt_button.Size = new Size(304, 34);
             Expoprt_button.TabIndex = 8;
@@ -501,15 +536,76 @@
             saveFileDialog1.DefaultExt = "filter";
             saveFileDialog1.Filter = "过滤器配置文件|*.filter";
             // 
+            // tabControl
+            // 
+            tabControl.Controls.Add(tabPage1);
+            tabControl.Controls.Add(tabPage2);
+            tabControl.Controls.Add(tabPage3);
+            tabControl.Location = new Point(12, 12);
+            tabControl.Multiline = true;
+            tabControl.Name = "tabControl";
+            tabControl.SelectedIndex = 0;
+            tabControl.Size = new Size(1091, 774);
+            tabControl.TabIndex = 9;
+            // 
+            // tabPage1
+            // 
+            tabPage1.Controls.Add(EditorTreeView);
+            tabPage1.Controls.Add(NodeStyle_groupBox);
+            tabPage1.Controls.Add(Expoprt_button);
+            tabPage1.Controls.Add(TreeNode_groupBox);
+            tabPage1.Location = new Point(4, 26);
+            tabPage1.Name = "tabPage1";
+            tabPage1.Padding = new Padding(3);
+            tabPage1.Size = new Size(1083, 744);
+            tabPage1.TabIndex = 0;
+            tabPage1.Text = "过滤编辑";
+            tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            tabPage2.Controls.Add(audioResoucePanel);
+            tabPage2.Location = new Point(4, 26);
+            tabPage2.Name = "tabPage2";
+            tabPage2.Padding = new Padding(3);
+            tabPage2.Size = new Size(1083, 744);
+            tabPage2.TabIndex = 1;
+            tabPage2.Text = "音效管理";
+            tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // audioResoucePanel
+            // 
+            audioResoucePanel.Location = new Point(3, 3);
+            audioResoucePanel.Name = "audioResoucePanel";
+            audioResoucePanel.Size = new Size(1070, 735);
+            audioResoucePanel.TabIndex = 0;
+            // 
+            // tabPage3
+            // 
+            tabPage3.Controls.Add(CopyAudio_checkBox);
+            tabPage3.Location = new Point(4, 26);
+            tabPage3.Name = "tabPage3";
+            tabPage3.Size = new Size(1083, 744);
+            tabPage3.TabIndex = 2;
+            tabPage3.Text = "选项";
+            tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // CopyAudio_checkBox
+            // 
+            CopyAudio_checkBox.AutoSize = true;
+            CopyAudio_checkBox.Location = new Point(3, 3);
+            CopyAudio_checkBox.Name = "CopyAudio_checkBox";
+            CopyAudio_checkBox.Size = new Size(291, 21);
+            CopyAudio_checkBox.TabIndex = 0;
+            CopyAudio_checkBox.Text = "导出过滤器时，将音效素材一同拷贝至新的目录下";
+            CopyAudio_checkBox.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1067, 799);
-            Controls.Add(Expoprt_button);
-            Controls.Add(NodeStyle_groupBox);
-            Controls.Add(TreeNode_groupBox);
-            Controls.Add(EditorTreeView);
+            ClientSize = new Size(1109, 799);
+            Controls.Add(tabControl);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "Form1";
             Text = "Form1";
@@ -531,6 +627,8 @@
             flowLayoutPanel2.PerformLayout();
             NodeStyle_groupBox.ResumeLayout(false);
             NodeStyle_groupBox.PerformLayout();
+            StyleSound_groupBox.ResumeLayout(false);
+            StyleSound_groupBox.PerformLayout();
             StyleFontSize_flowLayoutPanel1.ResumeLayout(false);
             StyleFontSize_flowLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)StyleFontSize_trackBar).EndInit();
@@ -538,8 +636,13 @@
             flowLayoutPanel3.PerformLayout();
             StyleColorBox_LayoutPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)Scene_pictureBox).EndInit();
+            tabControl.ResumeLayout(false);
+            tabPage1.ResumeLayout(false);
+            tabPage1.PerformLayout();
+            tabPage2.ResumeLayout(false);
+            tabPage3.ResumeLayout(false);
+            tabPage3.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -585,5 +688,13 @@
         private GroupBox StyleBox_groupBox;
         private Button Expoprt_button;
         private SaveFileDialog saveFileDialog1;
+        private TabControl tabControl;
+        private TabPage tabPage1;
+        private ComboBox AudioResouce_ComboBox;
+        private Label AudioShow_Label;
+        private TabPage tabPage2;
+        private MyControl.AudioResouceBox.AudioResoucePanel audioResoucePanel;
+        private TabPage tabPage3;
+        private CheckBox CopyAudio_checkBox;
     }
 }

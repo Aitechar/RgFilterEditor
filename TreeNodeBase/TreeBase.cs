@@ -10,15 +10,13 @@ namespace FilterEditor.TreeNodeBase
         public readonly ClassTreeNode Root;
         public readonly HashSet<ClassAttrEnum> AllowClassAttrSet;
 
-        public Tree(string _classShowName, IList<string> _classNames, IList<string> _baseTypeNames)
+        public Tree(string _classShowName, IList<string> _classNames, IList<string> _baseTypeNames, StyleBoxBase? styleBox = null)
         {
-            // baseClass = ""; //TODO 在json中设置好BaseClass并加载到实例中
-
             classShowName = _classShowName;
             className = _classNames;
             baseTypeName = _baseTypeNames;
 
-            Root = new(new ClassAttrBase(0, 0, ClassAttrEnum.Root), this);
+            Root = new(new ClassAttrBase(0, 0, ClassAttrEnum.Root), this, styleBox);
             AllowClassAttrSet = [];
         }
 
@@ -61,13 +59,13 @@ namespace FilterEditor.TreeNodeBase
         }
     }
 
-    public class ClassTreeNode(ClassAttrBase _classifiedAttrBase, Tree _tree)
+    public class ClassTreeNode(ClassAttrBase _classifiedAttrBase, Tree _tree, StyleBoxBase? _styleBox = null)
     {
         public Tree tree = _tree;
         public ClassTreeNode? parent;                       // 空为根
         public ClassAttrBase attr = _classifiedAttrBase;    // 分类的属性
         public string Display => attr.Display;              // 获取节点分类的描述
-        public StyleBoxBase styleBox = new(false, Color.Red, Color.White, Color.Red);   // 节点样式
+        public StyleBoxBase styleBox = _styleBox ?? new(false, Color.Red, Color.White, Color.Red);                                               // 节点样式
 
         public readonly List<ClassTreeNode> children = [];
 
@@ -230,15 +228,19 @@ namespace FilterEditor.TreeNodeBase
             if (!CanSplit(splitValue)) throw new Exception($"不能分成两个节点， 因为值不在范围内");
             return (new(MinValue, splitValue - 1, classEnum), new(splitValue, MaxValue, classEnum));
         }
-        
+
+        /// <summary>
+        /// 返回过滤器实际编写的条例要求: (前要求，后要求)
+        /// </summary>
         public (string, string) GetWrite()
         {
             if (classEnum == ClassAttrEnum.WayStoneLevel) return ("", "");
             return classEnum switch
             {
                 ClassAttrEnum.WayStoneLevel => ("", ""),
+                ClassAttrEnum.SupportLevel => ($"ItemLevel >= {MinValue}", $"ItemLevel <= {MaxValue}"),
                 ClassAttrEnum.Rarity => ($"Rarity >= {GetRarity(MinValue)}", $"Rarity <= {GetRarity(MaxValue)}"),
-                _ => ($"{classEnum.ToString()} >= {MinValue}", $"{classEnum.ToString()} <= {MaxValue}"),
+                _ => ($"{classEnum} >= {MinValue}", $"{classEnum} <= {MaxValue}"),
             };
         }
 

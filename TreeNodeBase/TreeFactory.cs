@@ -1,7 +1,6 @@
-using static FilterEditor.TreeNodeBase.ClassAttrEnum;
 using Newtonsoft.Json;
-using System.Text;
 using FilterEditor.TreeNodeBase.StyleBox;
+using FilterEditor.MyControl.AudioResouceBox;
 
 namespace FilterEditor.TreeNodeBase
 {
@@ -19,14 +18,14 @@ namespace FilterEditor.TreeNodeBase
         }
 
         /// <summary>
-        /// TODO 根据json构建一颗树
+        /// 根据json构建一颗树
         /// </summary>
         public static IList<(string, IList<Tree>)> BuildTreesBy(string jsonPath)
         {
             try
             {
                 string textAsset = File.ReadAllText(jsonPath);
-                JsonSerializerSettings settings = new() { StringEscapeHandling = StringEscapeHandling.EscapeNonAscii }; // 中文编码
+                JsonSerializerSettings settings = new() { StringEscapeHandling = StringEscapeHandling.EscapeNonAscii };
                 var treeMaps = JsonConvert.DeserializeObject<List<TreeMapGreat>>(textAsset, settings)
                     ?? throw new Exception($"Load {jsonPath} Error, 没有正确的解析到json");
 
@@ -37,7 +36,7 @@ namespace FilterEditor.TreeNodeBase
                     IList<Tree> tress = [];
                     foreach (var tree in treeMap.SeqTrees)
                     {
-                        Tree tmpTree = new(tree.ClassShowName, tree.ClassName, tree.BaseTypeName);
+                        Tree tmpTree = new(tree.ClassShowName, tree.ClassName, tree.BaseTypeName, GetStyleBox(title));
                         tmpTree.SetClassAttr(tree.AttrEnum);
                         tress.Add(tmpTree);
                     }
@@ -53,24 +52,20 @@ namespace FilterEditor.TreeNodeBase
         }
 
         /// <summary>
-        /// TODO 生成文本
+        /// 导出过滤器
         /// </summary>
-        /// <param name="trees"></param>
-        public async static void SummonFilter(IList<Tree> trees, string path)
-        {
-            await Task.Run(() => 0);
-            throw new NotImplementedException();
-        }
-
-        public static void OutPutFilter(string outputPath, IList<(string, IList<Tree>)> treeMaps)
+        public static void OutPutFilter(string outputPath, IList<(string, IList<Tree>)> treeMaps, bool IsCopyAudio = false)
         {
             using StreamWriter sw = new(outputPath);
+            HashSet<string> audioNames = [];
+            var filterName = Path.GetFileNameWithoutExtension(outputPath);
 
             void dfs(ClassTreeNode node, IList<ClassAttrBase> attrs)
             {
                 if (node.children.Count == 0)
                 {
-                    WriteSimple(sw, node.tree, node.styleBox, attrs);
+                    WriteSimple(sw, node.tree, node.styleBox, attrs, filterName);
+                    if (IsCopyAudio) audioNames.Add(node.styleBox.audioName);
                     return;
                 }
                 foreach (var child in node.children)
@@ -89,11 +84,33 @@ namespace FilterEditor.TreeNodeBase
                     dfs(root, []);
                 }
             }
+
+            if (IsCopyAudio && audioNames.Count != 0)
+            {
+                var rootPath = Path.GetDirectoryName(outputPath) ?? "";
+                var audioDirPath = Path.Combine(rootPath, Path.GetFileNameWithoutExtension(outputPath)) + Path.DirectorySeparatorChar;
+                // 创建同名的文件夹
+                if (!Directory.Exists(audioDirPath))
+                    Directory.CreateDirectory(audioDirPath);
+
+                var audioManger = AudioResouceManager.Instance;
+                foreach (var audioName in audioNames)
+                {
+                    string? audioOriginFileName = audioManger.GetAudioFilePath(audioName);
+
+                    if (audioOriginFileName != null)
+                    {
+                        string destinationFilePath = Path.Combine(audioDirPath, Path.GetFileName(audioOriginFileName));
+                        File.Copy(audioOriginFileName, destinationFilePath, overwrite: true);
+                    }
+                }
+            }
         }
+
         /// <summary>
-        /// 写通常物品 TODO
+        /// 写通常物品
         /// </summary>
-        private static void WriteSimple(StreamWriter sw, Tree tree, StyleBoxBase styleBox, IList<ClassAttrBase> attrs)
+        private static void WriteSimple(StreamWriter sw, Tree tree, StyleBoxBase styleBox, IList<ClassAttrBase> attrs, string filterName)
         {
             var classNames = tree.className;
             var baseTypes = tree.baseTypeName;
@@ -126,11 +143,30 @@ namespace FilterEditor.TreeNodeBase
             }
 
             /// 写样式
-            foreach (string style in styleBox.GetWrite())
+            foreach (string style in styleBox.GetWrite(filterName))
                 sw.WriteLine(style);
 
             sw.WriteLine();
         }
+
+        private static StyleBoxBase GetStyleBox(string typeName)
+        {
+            return typeName switch
+            {
+                "玩法与地图" => new(false, Color.Black, Color.Yellow, Color.Gold),
+                "技能宝石" => new(false, Color.SkyBlue, Color.Transparent, Color.SkyBlue),
+                "单手武器" or "双手武器" or "副手" or "防具" => new(false, Color.Black, Color.Yellow, Color.Gold),
+                "饰品" => new(false, Color.Black, Color.Transparent, Color.Blue),
+                "药剂与护符" => new(false, Color.Blue, Color.Transparent, Color.Blue),
+                "高价值通货" => new(false, Color.Red, Color.White, Color.Red),
+                "中上价值通货" or "品质强化通货" or "圣所钥匙" => new(false, Color.Blue, Color.Yellow, Color.Blue),
+                "中下价值通货" or "通货碎片" or "异域通货" => new(false, Color.DeepSkyBlue, Color.Yellow, Color.DeepSkyBlue),
+                "低价值通货" => new(false, Color.Blue, Color.Transparent, Color.Blue),
+                "珠宝" => new(false, Color.Green, Color.Transparent, Color.Green),
+                _ => new(false, Color.SkyBlue, Color.Transparent, Color.SkyBlue),
+            };
+        }
+
     }
 
     public class TreeMapGreat

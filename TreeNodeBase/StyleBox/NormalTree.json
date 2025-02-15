@@ -71,13 +71,11 @@
         ]
     },
     {
-        "ClassShowName": "未切割的技能宝石",
+        "ClassShowName": "技能宝石",
         "SeqTrees": [
             {
                 "ClassShowName": "技能宝石",
-                "ClassName": [
-                    "Gems"
-                ],
+                "ClassName": [],
                 "BaseTypeName": [
                     "Uncut Skill Gem"
                 ],
@@ -88,9 +86,7 @@
             },
             {
                 "ClassShowName": "精魂宝石",
-                "ClassName": [
-                    "Gems"
-                ],
+                "ClassName": [],
                 "BaseTypeName": [
                     "Uncut Spirit Gem"
                 ],
@@ -101,9 +97,7 @@
             },
             {
                 "ClassShowName": "辅助宝石",
-                "ClassName": [
-                    "Gems"
-                ],
+                "ClassName": [],
                 "BaseTypeName": [
                     "Uncut Support Gem"
                 ],
@@ -315,7 +309,7 @@
         ]
     },
     {
-        "ClassShowName": "项链",
+        "ClassShowName": "饰品",
         "SeqTrees": [
             {
                 "ClassShowName": "项链",

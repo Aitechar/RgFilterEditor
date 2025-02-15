@@ -10,20 +10,31 @@ namespace FilterEditor
         private TreeNode? _nowSelectNode = null;
         private readonly IList<(string, IList<Tree>)> _treeMaps = [];
 
+        public bool IsCopyAudio => CopyAudio_checkBox.Checked;
+
         public Form1()
         {
             InitializeComponent();
-            _treeMaps = TreeFactory.BuildTreesBy(@"TreeNodeBase\StyleBox\NormalTree.json");
+            try
+            {
+                // TODO 修改为相对路径
+                _treeMaps = TreeFactory.BuildTreesBy(@"E:\FilterEditor\bin\Release\net9.0-windows\NormalTree.json");
 
-            /// 样式Combo框选择的来源
-            StyleMapIcon_comboBox.DataSource = Enum.GetValues<MiniMapIconEnum>();
-            StyleMapColor_comboBox.DataSource = Enum.GetValues<DrawSpColorEnum>();
-            StylePlayEffect_comboBox.DataSource = Enum.GetValues<DrawSpColorEnum>();
+                /// 样式Combo框选择的来源
+                StyleMapIcon_comboBox.DataSource = Enum.GetValues<MiniMapIconEnum>();
+                StyleMapColor_comboBox.DataSource = Enum.GetValues<DrawSpColorEnum>();
+                StylePlayEffect_comboBox.DataSource = Enum.GetValues<DrawSpColorEnum>();
 
-            /// 同步树窗组件 并展开
-            (_viewToData, _dataToView) = UpdateTreeViews(EditorTreeView, _treeMaps);
-            SelectTreeNode(_dataToView[_treeMaps[0].Item2[0].Root]);
-            EditorTreeView.ExpandAll();
+                /// 同步树窗组件 并展开
+                (_viewToData, _dataToView) = UpdateTreeViews(EditorTreeView, _treeMaps);
+                SelectTreeNode(_dataToView[_treeMaps[0].Item2[0].Root]);
+                EditorTreeView.ExpandAll();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+
         }
         /// <summary>
         /// 加载所有的树
@@ -94,7 +105,7 @@ namespace FilterEditor
         }
 
         /// <summary>
-        /// 选择到节点的逻辑
+        /// 选择并展示过滤节点信息
         /// </summary>
         private void SelectTreeNode(TreeNode? node = null)
         {
@@ -158,13 +169,24 @@ namespace FilterEditor
             UpdateStyleControls(datanode.styleBox);
             EditorStyleControl.UpdateValue(datanode.styleBox, tree.classShowName);
 
+            if (audioResoucePanel.resouceManager.GetNameVaild(datanode.styleBox.audioName))
+            {
+                AudioResouce_ComboBox.SelectedItem = datanode.styleBox.audioName;
+            }
+            else
+            {
+                datanode.styleBox.audioName = "";
+                AudioResouce_ComboBox.SelectedItem = null;
+            }
+
+
             /// 让根节点可见
             var rootData = datanode.tree.Root;
             var rootview = _dataToView[rootData];
             rootview.EnsureVisible();
         }
 
-        #region 节点编辑回调
+        #region --- 节点编辑回调
         private void AddNewClassAttr_ComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             var item = AddNewClassAttr_ComboBox.SelectedItem;
@@ -246,7 +268,7 @@ namespace FilterEditor
         }
         #endregion
 
-        #region -- 样式：边框+背景+文字按钮回调
+        #region --- 样式：边框+背景+文字按钮回调
 
         private void UpdateStyleControls(StyleBoxBase box)
         {
@@ -361,7 +383,6 @@ namespace FilterEditor
 
         #endregion
 
-
         #region --- ComboBox 枚举翻译
         /// <summary>
         /// 设置分类属性的打印格式
@@ -405,11 +426,30 @@ namespace FilterEditor
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 var path = saveFileDialog1.FileName;
-                TreeFactory.OutPutFilter(path, _treeMaps);
+                TreeFactory.OutPutFilter(path, _treeMaps, IsCopyAudio);
 
                 // 提醒
                 MessageBox.Show("导出成功", "信息", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
             }
         }
+
+        #region --- 音效管理
+
+        private void AudioResouce_ComboBox_DropDown(object sender, EventArgs e)
+        {
+            AudioResouce_ComboBox.Items.Clear();
+            foreach (var name in audioResoucePanel.resouceManager.GetAudioNames()) AudioResouce_ComboBox.Items.Add(name);
+            AudioResouce_ComboBox.Refresh();
+        }
+
+        private void AudioResouce_ComboBox_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            if (_nowSelectNode == null) return;
+            var dataNode = _viewToData[_nowSelectNode];
+            if (AudioResouce_ComboBox.SelectedItem is string audioName)
+                dataNode.styleBox.audioName = audioName;
+        }
+
+        #endregion
     }
 }
