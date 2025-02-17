@@ -105,11 +105,11 @@ namespace FilterEditor.TreeNodeBase
                 // ClassAttrEnum.AgiNeed => (1, 300),
                 // ClassAttrEnum.IntNeed => (1, 300),
 
-                ClassAttrEnum.Armour => (1, 1000),
-                ClassAttrEnum.Evasion => (1, 3000),
-                ClassAttrEnum.EnergyShield => (1, 3000),
-                ClassAttrEnum.Spirit => (1, 200),
-                
+                ClassAttrEnum.Armour => (0, 1000),
+                ClassAttrEnum.Evasion => (0, 3000),
+                ClassAttrEnum.EnergyShield => (0, 3000),
+                ClassAttrEnum.Spirit => (0, 200),
+
                 _ => throw new ArgumentException($"invaild Enum: {nameof(attrEnum)}"),
             };
         }

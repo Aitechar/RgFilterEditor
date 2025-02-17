@@ -34,6 +34,8 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.Transparent;
+            ForeColor = Color.Transparent;
             Name = "StyleControl";
             Size = new Size(150, 40);
             ResumeLayout(false);

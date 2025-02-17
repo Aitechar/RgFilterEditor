@@ -61,7 +61,6 @@ namespace FilterEditor.MyControl
 
             int penOffset = (int)(borderPen.Width / 2);
             Rectangle borderRectangle = new(new Point((Width - rectWidth) / 2, (Height - rectHeight) / 2), new Size(rectWidth - penOffset, rectHeight - penOffset));
-            // Rectangle borderRectangle = new(penOffset, penOffset, (int)(width - borderPen.Width), (int)(Height - borderPen.Width));
 
             g.FillRectangle(backGroundBrush, borderRectangle);
             g.DrawRectangle(borderPen, borderRectangle);
@@ -73,7 +72,7 @@ namespace FilterEditor.MyControl
             TextColor = box.textColor;
             FontSize = box.fontSize;
             BackGroundColor = box.backGroundColor;
-            BoarderColor = box.boarderColor;
+            BoarderColor = box.borderColor;
             IsStrickOut = box.isHide;
 
             if (text.Length != 0)

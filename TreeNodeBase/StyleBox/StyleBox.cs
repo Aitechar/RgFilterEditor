@@ -7,20 +7,22 @@ namespace FilterEditor.TreeNodeBase.StyleBox
         public bool isHide = _isHide;
         public Color textColor = _text;
         public Color backGroundColor = _backGround;
-        public Color boarderColor = _board;
+        public Color borderColor = _board;
         public int fontSize = _fontSize;
         public MiniMapIconEnum miniMapIcon = _mapIcon;         // 小地图图标
         public DrawSpColorEnum miniMapColor = _mapColor;        // 小地图图标颜色
         public DrawSpColorEnum playEffectColor = _playColor;     // 光柱颜色
         public string audioName = _soundName;           // 音效相对路径
 
-        public StyleBoxBase(StyleBoxBase other) : this(other.isHide, other.textColor, other.backGroundColor, other.boarderColor, other.fontSize, other.miniMapIcon, other.miniMapColor, other.playEffectColor, other.audioName) { }
+        public StyleBoxBase(StyleBoxBase other) : this(other.isHide, other.textColor, other.backGroundColor, other.borderColor, other.fontSize, other.miniMapIcon, other.miniMapColor, other.playEffectColor, other.audioName) { }
+
+        public StyleBoxBase() : this(false, Color.Black, Color.Transparent, Color.Black) { }
 
         public IList<string> GetWrite(string filterName)
         {
             IList<string> res = [
                 $"\tSetTextColor {textColor.R} {textColor.G} {textColor.B}",
-                $"\tSetBorderColor {boarderColor.R} {boarderColor.G} {boarderColor.B}",
+                $"\tSetBorderColor {borderColor.R} {borderColor.G} {borderColor.B}",
                 $"\tSetBackgroundColor {backGroundColor.R} {backGroundColor.G} {backGroundColor.B}",
                 $"\tSetFontSize {fontSize}",
             ];

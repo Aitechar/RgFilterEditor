@@ -1,9 +1,9 @@
 [
     {
-        "ClassShowName": "玩法与地囄1�7",
+        "ClassShowName": "玩法与地图",
         "SeqTrees": [
             {
-                "ClassShowName": "换界矄1�7",
+                "ClassShowName": "换界石",
                 "ClassName": [
                     "Waystones"
                 ],
@@ -24,7 +24,7 @@
                 "AttrEnum": []
             },
             {
-                "ClassShowName": "裂隙矄1�7",
+                "ClassShowName": "裂隙石",
                 "ClassName": [
                     "Breachstone"
                 ],
@@ -34,7 +34,7 @@
                 "AttrEnum": []
             },
             {
-                "ClassShowName": "裂隙与幻象碎牄1�7",
+                "ClassShowName": "裂隙与幻象碎片",
                 "ClassName": [
                     "Stackable Currency"
                 ],
@@ -71,10 +71,10 @@
         ]
     },
     {
-        "ClassShowName": "抢�能宝矄1�7",
+        "ClassShowName": "未切割的宝石",
         "SeqTrees": [
             {
-                "ClassShowName": "抢�能宝矄1�7",
+                "ClassShowName": "技能宝石",
                 "ClassName": [],
                 "BaseTypeName": [
                     "Uncut Skill Gem"
@@ -123,7 +123,7 @@
                 ]
             },
             {
-                "ClassShowName": "单手锄1�7",
+                "ClassShowName": "单手锤",
                 "ClassName": [
                     "One Hand Maces"
                 ],
@@ -151,7 +151,7 @@
         "ClassShowName": "双手武器",
         "SeqTrees": [
             {
-                "ClassShowName": "弄1�7",
+                "ClassShowName": "弓",
                 "ClassName": [
                     "Bow"
                 ],
@@ -173,7 +173,7 @@
                 ]
             },
             {
-                "ClassShowName": "双手锄1�7",
+                "ClassShowName": "双手锤",
                 "ClassName": [
                     "Two Hand Maces"
                 ],
@@ -347,7 +347,7 @@
         ]
     },
     {
-        "ClassShowName": "药剂与护笄1�7",
+        "ClassShowName": "药剂与护符",
         "SeqTrees": [
             {
                 "ClassShowName": "生命药剂",
@@ -387,7 +387,7 @@
         ]
     },
     {
-        "ClassShowName": "高价值��货",
+        "ClassShowName": "高价值通货",
         "SeqTrees": [
             {
                 "ClassShowName": "金币",
@@ -414,7 +414,7 @@
                 ]
             },
             {
-                "ClassShowName": "神圣矄1�7",
+                "ClassShowName": "神圣石",
                 "ClassName": [
                     "Stackable Currency"
                 ],
@@ -426,7 +426,7 @@
                 ]
             },
             {
-                "ClassShowName": "完美工匠矄1�7",
+                "ClassShowName": "完美工匠石",
                 "ClassName": [
                     "Stackable Currency"
                 ],
@@ -440,7 +440,7 @@
         ]
     },
     {
-        "ClassShowName": "中上价����货",
+        "ClassShowName": "中上价值通货",
         "SeqTrees": [
             {
                 "ClassShowName": "瓦尔宝珠",
@@ -455,7 +455,7 @@
                 ]
             },
             {
-                "ClassShowName": "剥离矄1�7",
+                "ClassShowName": "剥离石",
                 "ClassName": [
                     "Stackable Currency"
                 ],
@@ -467,7 +467,7 @@
                 ]
             },
             {
-                "ClassShowName": "崇高矄1�7",
+                "ClassShowName": "崇高石",
                 "ClassName": [
                     "Stackable Currency"
                 ],
@@ -479,7 +479,7 @@
                 ]
             },
             {
-                "ClassShowName": "机会矄1�7",
+                "ClassShowName": "机会石",
                 "ClassName": [
                     "Stackable Currency"
                 ],
@@ -491,7 +491,7 @@
                 ]
             },
             {
-                "ClassShowName": "高级工匠矄1�7",
+                "ClassShowName": "高级工匠石",
                 "ClassName": [
                     "Stackable Currency"
                 ],
@@ -503,7 +503,7 @@
                 ]
             },
             {
-                "ClassShowName": "混沌矄1�7",
+                "ClassShowName": "混沌石",
                 "ClassName": [
                     "Stackable Currency"
                 ],
@@ -517,10 +517,10 @@
         ]
     },
     {
-        "ClassShowName": "中下价����货",
+        "ClassShowName": "中下价值通货",
         "SeqTrees": [
             {
-                "ClassShowName": "点金矄1�7",
+                "ClassShowName": "点金石",
                 "ClassName": [
                     "Stackable Currency"
                 ],
@@ -532,7 +532,7 @@
                 ]
             },
             {
-                "ClassShowName": "富豪矄1�7",
+                "ClassShowName": "富豪石",
                 "ClassName": [
                     "Stackable Currency"
                 ],
@@ -544,7 +544,7 @@
                 ]
             },
             {
-                "ClassShowName": "小型工匠矄1�7",
+                "ClassShowName": "小型工匠石",
                 "ClassName": [
                     "Stackable Currency"
                 ],
@@ -558,7 +558,7 @@
         ]
     },
     {
-        "ClassShowName": "低价值��货",
+        "ClassShowName": "低价值通货",
         "SeqTrees": [
             {
                 "ClassShowName": "知识卷轴",
@@ -573,7 +573,7 @@
                 ]
             },
             {
-                "ClassShowName": "增幅矄1�7",
+                "ClassShowName": "增幅石",
                 "ClassName": [
                     "Stackable Currency"
                 ],
@@ -585,7 +585,7 @@
                 ]
             },
             {
-                "ClassShowName": "蜕变矄1�7",
+                "ClassShowName": "蜕变石",
                 "ClassName": [
                     "Stackable Currency"
                 ],
@@ -602,7 +602,7 @@
         "ClassShowName": "品质强化通货",
         "SeqTrees": [
             {
-                "ClassShowName": "磨刀矄1�7",
+                "ClassShowName": "磨刀石",
                 "ClassName": [
                     "Stackable Currency"
                 ],
@@ -626,7 +626,7 @@
                 ]
             },
             {
-                "ClassShowName": "装备工匠矄1�7",
+                "ClassShowName": "装备工匠石",
                 "ClassName": [
                     "Stackable Currency"
                 ],
@@ -638,7 +638,7 @@
                 ]
             },
             {
-                "ClassShowName": "护甲牄1�7",
+                "ClassShowName": "护甲片",
                 "ClassName": [
                     "Stackable Currency"
                 ],
@@ -650,7 +650,7 @@
                 ]
             },
             {
-                "ClassShowName": "奥术蚢�刻师",
+                "ClassShowName": "奥术铭刻师",
                 "ClassName": [
                     "Stackable Currency"
                 ],
@@ -691,7 +691,7 @@
                 ]
             },
             {
-                "ClassShowName": "蜕变石碎牄1�7",
+                "ClassShowName": "蜕变石碎片",
                 "ClassName": [
                     "Stackable Currency"
                 ],
@@ -703,7 +703,7 @@
                 ]
             },
             {
-                "ClassShowName": "富豪石碎牄1�7",
+                "ClassShowName": "富豪石碎片",
                 "ClassName": [
                     "Stackable Currency"
                 ],
@@ -744,7 +744,7 @@
                 ]
             },
             {
-                "ClassShowName": "三属性符斄1�7",
+                "ClassShowName": "三属性符文",
                 "ClassName": [
                     "Socketable"
                 ],
@@ -775,7 +775,7 @@
                 ]
             },
             {
-                "ClassShowName": "稢�有度核心",
+                "ClassShowName": "稀有度核心",
                 "ClassName": [
                     "Socketable"
                 ],

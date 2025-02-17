@@ -1,3 +1,5 @@
+using System.Reflection;
+using System.Resources;
 using FilterEditor.TreeNodeBase;
 using FilterEditor.TreeNodeBase.StyleBox;
 
@@ -9,16 +11,20 @@ namespace FilterEditor
         private Dictionary<ClassTreeNode, TreeNode> _dataToView = [];   // TODO 更改为<string, Dic<data, view>>
         private TreeNode? _nowSelectNode = null;
         private readonly IList<(string, IList<Tree>)> _treeMaps = [];
+        private readonly string _sceneImageFolder = Path.Combine(Application.StartupPath, "SceneImages");
+        private readonly IList<string> _sceneImagePaths = [];
+        private readonly Random random = new();
 
         public bool IsCopyAudio => CopyAudio_checkBox.Checked;
+        public bool IsCopyStyleAudio => CopyStyleAudio_checkBox.Checked;
 
         public Form1()
         {
             InitializeComponent();
             try
             {
-                // TODO 修改为相对路径
-                _treeMaps = TreeFactory.BuildTreesBy(@"E:\FilterEditor\bin\Release\net9.0-windows\NormalTree.json");
+                string jsonPath = GetNormalTreePath();
+                _treeMaps = TreeFactory.BuildTreesBy(jsonPath);
 
                 /// 样式Combo框选择的来源
                 StyleMapIcon_comboBox.DataSource = Enum.GetValues<MiniMapIconEnum>();
@@ -29,6 +35,16 @@ namespace FilterEditor
                 (_viewToData, _dataToView) = UpdateTreeViews(EditorTreeView, _treeMaps);
                 SelectTreeNode(_dataToView[_treeMaps[0].Item2[0].Root]);
                 EditorTreeView.ExpandAll();
+
+                /// 样式盘的事件绑定
+                stylePrefabsPanel1.OnStyleApply += ApplyeStylePrefab;
+                stylePrefabsPanel1.OnCopyStyleButtonClicked += CopyStyleToPanel;
+                EditorStyleControl.BackColor = Color.Transparent;
+
+                /// 场景背景图
+                CheckSceneFolder();
+                SelectRandomSceneImage();
+
             }
             catch (Exception e)
             {
@@ -36,6 +52,7 @@ namespace FilterEditor
             }
 
         }
+
         /// <summary>
         /// 加载所有的树
         /// </summary>
@@ -274,7 +291,7 @@ namespace FilterEditor
         {
             StyleTextColor_Button.BackColor = box.textColor;
             StyleBackGround_Button.BackColor = box.backGroundColor;
-            StyleBoardColor_Button.BackColor = box.boarderColor;
+            StyleBoardColor_Button.BackColor = box.borderColor;
 
             StyleMapIcon_comboBox.SelectedItem = box.miniMapIcon;
             StyleMapColor_comboBox.SelectedItem = box.miniMapColor;
@@ -298,7 +315,7 @@ namespace FilterEditor
 
                 if (_nowSelectNode != null)
                 {
-                    _viewToData[_nowSelectNode].styleBox.boarderColor = targetColor;
+                    _viewToData[_nowSelectNode].styleBox.borderColor = targetColor;
                 }
             }
         }
@@ -414,7 +431,9 @@ namespace FilterEditor
         }
         #endregion
 
-        private void Expoprt_button_Click(object sender, EventArgs e)
+        #region --- 导出
+
+        private void Export_button_Click(object sender, EventArgs e)
         {
             Thread thread = new(new ThreadStart(ExportFilter));
             thread.SetApartmentState(ApartmentState.STA);
@@ -433,7 +452,9 @@ namespace FilterEditor
             }
         }
 
-        #region --- 音效管理
+        # endregion
+
+        # region --- 音效管理
 
         private void AudioResouce_ComboBox_DropDown(object sender, EventArgs e)
         {
@@ -450,6 +471,129 @@ namespace FilterEditor
                 dataNode.styleBox.audioName = audioName;
         }
 
+        private void AudiaoClear_button_Click(object sender, EventArgs e)
+        {
+            if (_nowSelectNode == null) return;
+            var dataNode = _viewToData[_nowSelectNode];
+            AudioResouce_ComboBox.SelectedItem = null;
+            dataNode.styleBox.audioName = "";
+        }
+
         #endregion
+
+        # region --- 样式盘
+
+        /// <summary>
+        /// 将指定的样式赋予当前选择的节点
+        /// </summary>
+        private void ApplyeStylePrefab(StyleBoxBase styleBox)
+        {
+            if (_nowSelectNode == null) return;
+            var dataNode = _viewToData[_nowSelectNode];
+            dataNode.styleBox = new(styleBox);
+            SelectTreeNode(_nowSelectNode);
+        }
+
+        private void CopyStyleToPanel()
+        {
+            if (_nowSelectNode == null) return;
+            var dataNode = _viewToData[_nowSelectNode];
+            stylePrefabsPanel1.CopyStyle(dataNode.styleBox, IsCopyStyleAudio);
+        }
+
+        #endregion
+
+        # region --- 样式背景
+
+        private void CheckSceneFolder()
+        {
+            if (!Directory.Exists(_sceneImageFolder))
+            {
+                Directory.CreateDirectory(_sceneImageFolder);
+                ExportSceneImage(_sceneImageFolder);
+            }
+
+            _sceneImagePaths.Clear();
+            foreach (var path in Directory.GetFiles(_sceneImageFolder))
+            {
+                if (path.EndsWith(".jpg") || path.EndsWith(".png"))
+                {
+                    _sceneImagePaths.Add(path);
+                }
+            }
+        }
+
+        private static void ExportSceneImage(string dirPath)
+        {
+            // MessageBox.Show($"在 {dirPath} 下创建了文件夹!");
+            Dictionary<string, Image> maps = new()
+            {
+                {"Daylight_city.png", Properties.Resources.Daylight_city},
+                {"Daytime_rainforest.png", Properties.Resources.Daytime_rainforest},
+                {"Night_Forest.png", Properties.Resources.Night_Forest},
+                {"Pitch_black_chamber.png", Properties.Resources.Pitch_black_chamber},
+                {"Red_sand_sea.png", Properties.Resources.Red_sand_sea},
+            };
+
+            foreach (var kv in maps)
+            {
+                string filePath = Path.Combine(dirPath, kv.Key);
+                kv.Value.Save(filePath);
+            }
+        }
+        /// <summary>
+        /// 使用随机的场景图填充pictureBox
+        /// </summary>
+        private void SelectRandomSceneImage()
+        {
+            if (_sceneImagePaths.Count == 0) return;
+            var index = random.Next(_sceneImagePaths.Count);
+            SceneShow_panel.BackgroundImage = Image.FromFile(_sceneImagePaths[index]);
+        }
+
+        private void ChangeScene_button_Click(object sender, EventArgs e)
+        {
+            SelectRandomSceneImage();
+        }
+
+        #endregion
+
+        #region --- 默认树
+
+        /// <summary>
+        /// 获取树的路径，如果没有则会创建一个
+        /// </summary>
+        private static string GetNormalTreePath()
+        {
+            string jsonPath = Path.Combine(Application.StartupPath, "NormalTree.json");
+            if (!Path.Exists(jsonPath))
+            {
+                // MessageBox.Show($"Find Not, Try Create");
+                ExportResourceToFile(jsonPath);
+            }
+            return jsonPath;
+        }
+
+        /// <summary>
+        /// 在指定路径下创建树
+        /// </summary>
+        private static void ExportResourceToFile(string targetPath)
+        {
+            var jsonData = Properties.Resources.NormalTree;
+            File.WriteAllBytes(targetPath, jsonData);
+            // MessageBox.Show($"Create At {targetPath}");
+        }
+
+        # endregion
+
+        /// <summary>
+        /// 注销事件
+        /// </summary>
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            stylePrefabsPanel1.OnStyleApply -= ApplyeStylePrefab;
+            stylePrefabsPanel1.OnCopyStyleButtonClicked -= CopyStyleToPanel;
+            base.OnFormClosing(e);
+        }
     }
 }
